@@ -2,8 +2,13 @@
 
 require_once __DIR__ . '/mapmaker.php';
 
+$json_route = 'json/directory_map.json';
 
-$routes = json_decode(file_get_contents('directory_map.json'), true);
+if (!file_exists($json_route)) {
+    createMap(__DIR__);
+}
+
+$routes = json_decode(file_get_contents($json_route), true);
 
 function findAndLoadClass($class) {
     global $routes;
@@ -22,7 +27,7 @@ function findAndLoadClass($class) {
 }
 
 function rewritePackageRouteAndReFind($class) {
-    createMap( $_SERVER['DOCUMENT_ROOT']);
+    createMap(__DIR__);
 
     findAndLoadClass($class);
 }

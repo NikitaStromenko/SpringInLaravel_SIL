@@ -20,7 +20,7 @@ function createMap($dir) {
     $routes = array();
     findDirectories($dir);
 
-    $fp = fopen('directory_map.json', 'w+');
+    $fp = fopen('json/directory_map.json', 'w+');
     fwrite($fp, json_encode($routes));
     fclose($fp);
 }
