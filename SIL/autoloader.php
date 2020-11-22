@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/mapmaker.php';
 
-$json_route = 'json/directory_map.json';
+$json_route = 'SIL/json/directory_map.json';
 
 if (!file_exists($json_route)) {
     createMap(__DIR__);
