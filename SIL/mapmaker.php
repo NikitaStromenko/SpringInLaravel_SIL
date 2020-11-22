@@ -1,8 +1,7 @@
 <?php
 
-$routes = array();
 function findDirectories($dir) {
-    global $routes;
+    $routes = array();
     $ffs = scandir($dir);
 
     foreach ($ffs as $ff) {
@@ -13,12 +12,12 @@ function findDirectories($dir) {
             }
         }
     }
+
+    return $routes;
 }
 
 function createMap($dir) {
-    global $routes;
-    $routes = array();
-    findDirectories($dir);
+    $routes = findDirectories($dir);
 
     $fp = fopen('json/directory_map.json', 'w+');
     fwrite($fp, json_encode($routes));
